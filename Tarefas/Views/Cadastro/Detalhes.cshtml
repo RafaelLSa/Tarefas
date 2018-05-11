@@ -1,0 +1,29 @@
+﻿@using Tarefas.Models;
+
+@model Tarefas.ViewModels.TarefaViewModel
+@{
+    ViewBag.Title = "Detalhes da Tarefa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form method="post">
+    <h1>@Model.Detalhes</h1>
+    <table>
+        <tr>
+            <td>Atividade Importante?</td>
+            <td><select asp-for="Importante" asp-items="@Html.GetEnumSelectList<ListaBoolean>()"></select></td>
+        </tr>
+        <tr>
+            <td>Prazo Limite para a atividade</td>
+            <td>
+                @Model.DataLimite
+            </td>
+        </tr>
+        <tr>
+            <td>Atividade Foi Concluída?</td>
+            <td><select asp-for="Concluida" asp-items="@Html.GetEnumSelectList<ListaBoolean>()"></select></td>
+        </tr>
+    </table>
+    <div><a asp-action="Index" asp-controller="Cadastro">Voltar</a></div>
+
+    <div><a href="~/Cadastro/Alterar/@Model.Id">Alterar</a></div>
+</form>

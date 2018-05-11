@@ -1,0 +1,36 @@
+﻿@using Tarefas.ViewModels;
+@using  Tarefas.Models;
+@model TarefaViewModel
+@{
+    ViewBag.Title = "Alterar uma Tarefa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Descrição da Tarefa</td>
+            <td>
+                <input asp-for="Detalhes" />
+                <span asp-validation-for="Detalhes" />
+                <span>@Model.Detalhes</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Atividade Importante?</td>
+            <td><select asp-for="Importante" asp-items="@Html.GetEnumSelectList<ListaBoolean>()"></select></td>
+        </tr>
+        <tr>
+            <td>Prazo Limite para a atividade</td>
+            <td>
+                <input asp-for="DataLimite" />
+            </td>
+        </tr>
+        <tr>
+            <td>Atividade Foi Concluída?</td>
+            <td><select asp-for="Concluida" asp-items="@Html.GetEnumSelectList<ListaBoolean>()"></select></td>
+        </tr>
+    </table>
+
+    <input type="submit" name="Alterar" value="Alterar" />
+</form>

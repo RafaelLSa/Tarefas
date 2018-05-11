@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Tarefas.Models.Tarefa>
+@{ 
+    ViewBag.Title = "Lista de Tarefas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    @foreach (var tarefa in Model)
+    {
+        <tr>
+            <td>@{if (tarefa.Importante) { WriteLiteral("! - "); } }@tarefa.Detalhes</td>
+            <td><a asp-action="Detalhes" asp-route-id="@tarefa.Id">Detalhes</a></td>
+            <td><a asp-action="Excluir" asp-route-id="@tarefa.Id">Excluir</a></td>
+        </tr>
+    }
+</table>
+<a asp-action="Adicionar">Nova Tarefa</a>
+
